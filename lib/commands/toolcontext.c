@@ -1387,13 +1387,7 @@ struct cmd_context *create_toolcontext(unsigned is_long_lived,
 	/*
 	 * Environment variable LVM_SYSTEM_DIR overrides this below.
 	 */
-        if (system_dir)
-		strncpy(cmd->system_dir, system_dir, sizeof(cmd->system_dir) - 1);
-	else
-		strcpy(cmd->system_dir, DEFAULT_SYS_DIR);
-
-	if (!_get_env_vars(cmd))
-		goto_out;
+	strcpy(cmd->system_dir, DEFAULT_SYS_DIR);
 
 	/* Create system directory if it doesn't already exist */
 	if (*cmd->system_dir && !dm_create_dir(cmd->system_dir)) {
